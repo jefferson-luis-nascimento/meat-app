@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\restaurant-detail",
+    "\\src\\app\\restaurant-detail\\menu",
+    "\\src\\app\\restaurant-detail\\menu-item",
+    "\\src\\app\\restaurant-detail\\reviews",
+    "\\src\\app\\restaurant-detail\\shopping-cart",
+    "\\src\\app\\restaurants"
+  ],
+  "SelectedNode": "\\src\\app\\restaurant-detail\\reviews\\reviews.component.html",
+  "PreviewInSolutionExplorer": false
+}
