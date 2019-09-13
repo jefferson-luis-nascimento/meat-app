@@ -19,6 +19,12 @@
     "@angular/platform-browser": "~8.2.4",
     "@angular/platform-browser-dynamic": "~8.2.4",
     "@angular/router": "~8.2.4",
+    "admin-lte": "2.3.11",
+    "core-js": "2.4.1",
+    "font-awesome": "4.7.0",
+    "intl": "1.2.5",
+    "jquery": "3.1.1",
+    "reflect-metadata": "0.1.9",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
