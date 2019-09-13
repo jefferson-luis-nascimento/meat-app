@@ -1,5 +1,5 @@
-import { CartItem } from "./cart-item.model";
-import { MenuItem } from "../menu-item/menu-item.model";
+import { CartItem } from './cart-item.model';
+import { MenuItem } from '../menu-item/menu-item.model';
 
 export class ShoppingCartService {
   items: CartItem[] = [];
@@ -9,7 +9,7 @@ export class ShoppingCartService {
   }
 
   addItem(item: MenuItem): void {
-    let foundItem = this.items.find((mItem) => mItem.menuItem.id === item.id);
+    const foundItem = this.items.find((mItem) => mItem.menuItem.id === item.id);
 
     if (foundItem) {
       foundItem.quantity = foundItem.quantity + 1;
