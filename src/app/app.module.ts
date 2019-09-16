@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import {registerLocaleData} from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -50,12 +50,13 @@ registerLocaleData(localePt, 'pt');
     OrderItensComponent,
     DeliveryCostsComponent,
     OrderSummaryComponent,
-    RatingComponent 
+    RatingComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [RestaurantsService, ShoppingCartService, OrderService, {provide: LOCALE_ID, useValue: 'pt'}],

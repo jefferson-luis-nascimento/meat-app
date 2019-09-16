@@ -3,9 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\restaurant-detail",
-    "\\src\\app\\restaurant-detail\\shopping-cart",
-    "\\src\\app\\restaurants"
+    "\\src\\app\\order",
+    "\\src\\app\\order\\order-itens"
   ],
+  "SelectedNode": "\\src\\app\\order\\order.component.ts",
   "PreviewInSolutionExplorer": false
 }
