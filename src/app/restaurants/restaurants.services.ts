@@ -2,26 +2,25 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import {Restaurant} from './restaurant/restaurant.model';
+import { Restaurant } from './restaurant/restaurant.model';
 import { MEAT_API } from '../app.api';
 import { MenuItem } from '../restaurant-detail/menu-item/menu-item.model';
 
-@Injectable({
-  providedIn: "root"
-})
-export class RestaurantsService{
+@Injectable()
+export class RestaurantsService {
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) { }
 
-  restaurants(): Observable<Restaurant[]>{
-    return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`);
+  restaurants(search: string = ''): Observable<Restaurant[]> {
+    console.log(search);
+    return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`, { params: { q: search } });
   }
 
-  restaurantsById(id: string): Observable<Restaurant>{
+  restaurantsById(id: string): Observable<Restaurant> {
     return this.http.get<Restaurant>(`${MEAT_API}/restaurants/${id}`);
   }
 
-  reviews(id: string): Observable<any>{
+  reviews(id: string): Observable<any> {
     return this.http.get<any>(`${MEAT_API}/restaurants/${id}/reviews`);
   }
 
