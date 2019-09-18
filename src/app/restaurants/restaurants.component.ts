@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Restaurant} from './restaurant/restaurant.model';
-import {RestaurantsService} from './restaurants.services';
+
+import { Restaurant } from './restaurant/restaurant.model';
+import { RestaurantsService } from './restaurants.services';
 
 @Component({
   selector: 'mt-restaurants',
