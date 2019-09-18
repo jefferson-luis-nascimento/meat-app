@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Restaurant } from './restaurant/restaurant.model';
@@ -12,8 +12,13 @@ export class RestaurantsService {
   constructor(private http: HttpClient) { }
 
   restaurants(search: string = ''): Observable<Restaurant[]> {
-    console.log(search);
-    return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`, { params: { q: search } });
+    let params: HttpParams = undefined;
+
+    if (search) {
+      params = new HttpParams().set('q', search);
+    }
+
+    return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`, { params: params });
   }
 
   restaurantsById(id: string): Observable<Restaurant> {

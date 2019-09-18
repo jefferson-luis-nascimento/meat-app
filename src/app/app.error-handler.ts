@@ -1,4 +1,4 @@
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export class ErrorHandler{
@@ -6,12 +6,11 @@ export class ErrorHandler{
   static handleError<T>(error: HttpResponse<T>){
     let errorMessage: string;
 
-    if(error instanceof HttpResponse){
-      console.log('entrou no tipo');
-      errorMessage = `Erro ${error.status} ao acessar a URL ${error.url} - ${error.statusText}`;
+    if (error instanceof HttpErrorResponse) {
+      const body = error.error;
+      errorMessage = `Erro ${error.status} ao acessar a URL ${error.url} - ${error.statusText || ''} ${body}` ;
     }else{
-      console.log(typeof error);
-      errorMessage = error;
+      errorMessage = error.toString();
     }
 
     console.log(errorMessage);
