@@ -11,7 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.2.4",
+    "@angular/animation": "^4.0.0-beta.8",
+    "@angular/animations": "^8.2.6",
     "@angular/common": "~8.2.4",
     "@angular/compiler": "~8.2.4",
     "@angular/core": "~8.2.4",
@@ -19,14 +20,15 @@
     "@angular/platform-browser": "~8.2.4",
     "@angular/platform-browser-dynamic": "~8.2.4",
     "@angular/router": "~8.2.4",
-    "admin-lte": "2.3.11",
-    "core-js": "2.4.1",
+    "admin-lte": "^2.4.18",
+    "core-js": "^2.4.1",
     "font-awesome": "4.7.0",
     "intl": "1.2.5",
-    "jquery": "3.1.1",
+    "jquery": "^3.1.1",
     "reflect-metadata": "0.1.9",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

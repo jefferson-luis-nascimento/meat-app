@@ -4,8 +4,8 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\order",
-    "\\src\\app\\order\\order-itens"
+    "\\src\\app\\shared"
   ],
-  "SelectedNode": "\\src\\app\\order\\order.component.ts",
+  "SelectedNode": "\\angular.json",
   "PreviewInSolutionExplorer": false
 }
