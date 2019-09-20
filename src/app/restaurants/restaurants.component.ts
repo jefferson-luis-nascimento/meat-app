@@ -50,13 +50,10 @@ export class RestaurantsComponent implements OnInit {
         distinctUntilChanged(),
         switchMap(searchItem => this.restaurantsService.restaurants(searchItem)),
         catchError(error => from([]))
-    ).subscribe(
+      ).subscribe(
         restaurants => {
           console.log(restaurants);
           this.restaurants = restaurants;
-        },
-        err => {
-          this.restaurants = [];
         }
       );
 
@@ -64,9 +61,6 @@ export class RestaurantsComponent implements OnInit {
       .subscribe(
         restaurants => {
           this.restaurants = restaurants;
-        },
-        err => {
-          console.log(`${typeof err} => ${err.error}`);
         }
       );
 
