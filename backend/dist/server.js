@@ -21,11 +21,8 @@ server.use('/orders', authz_1.handlleAuthorization);
 server.use(router);
 var options = {
     cert: fs.readFileSync('./backend/keys/cert.pem'),
-    key: fs.readFileSync('./backend/keys/key.pem')
+    key: fs.readFileSync('./backend/keys/key.pem'),
 };
 https.createServer(options, server).listen(3001, function () {
     console.log('JSON Server is running on https://localhost:3001');
-});
-server.listen(3000, function () {
-    console.log('JSON Server is running');
 });

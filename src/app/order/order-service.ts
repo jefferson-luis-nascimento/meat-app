@@ -4,8 +4,9 @@ import { CartItem } from "../restaurant-detail/shopping-cart/cart-item.model";
 import { Order } from "./order.model";
 import { Observable } from "rxjs";
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { MEAT_API } from "../app.api";
+import { LoginService } from '../security/login/login.service';
 
 @Injectable()
 export class OrderService {
@@ -19,9 +20,7 @@ export class OrderService {
     return this.cartService.total();
   }
 
-  get headers(): HttpHeaders {
-    return new HttpHeaders().set('content-type', 'application/json');
-  }
+
 
   cartItems(): CartItem[] {
     return this.cartService.items;
@@ -40,9 +39,7 @@ export class OrderService {
   }
 
   checkOrder(order: Order): Observable<Order> {
-    console.log(JSON.stringify(order));
-
-    return this.http.post<Order>(`${MEAT_API}/orders`, JSON.stringify(order), { headers: this.headers});
+    return this.http.post<Order>(`${MEAT_API}/orders`, order);
   }
 
   clear(): void {

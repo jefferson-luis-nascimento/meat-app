@@ -5,6 +5,7 @@ import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { LoginService } from '../security/login/login.service';
 
 @Component({
   selector: 'mt-order',
@@ -13,9 +14,12 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 export class OrderComponent implements OnInit {
 
   constructor(private orderservice: OrderService,
-              private router: Router,
-              private formBuilder: FormBuilder) { }
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private loginService: LoginService
+  ) { }
 
+  orderId: number;
   orderForm: FormGroup;
 
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -57,6 +61,20 @@ export class OrderComponent implements OnInit {
       optionalAdress: this.formBuilder.control(''),
       paymentOption: this.formBuilder.control('', [Validators.required]),
     }, { validator: OrderComponent.equalsTo });
+
+    console.log(this.loginService.user)
+    console.log(this.loginService.isLoggedIn())
+
+    if (this.loginService.isLoggedIn()) {
+
+      this.orderForm.value.name = this.loginService.user.name;
+      this.orderForm.value.email = this.loginService.user.email;
+      this.orderForm.value.emailConfirmation = this.loginService.user.name;
+    }
+  }
+
+  isOrderCompleted(): boolean {
+    return this.orderId !== undefined;
   }
 
   itemsValue(): number {
@@ -85,7 +103,8 @@ export class OrderComponent implements OnInit {
 
     this.orderservice.checkOrder(order)
       .subscribe(
-        orderId => {
+        order => {
+          this.orderId = order.id;
           this.router.navigate(['/order-summary']);
           this.orderservice.clear();
         },

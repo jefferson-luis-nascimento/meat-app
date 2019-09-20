@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
+import { apiConfig } from './api-config';
 
 export const handlleAuthorization = (req: Request, resp: Response, next) => {
   const token = extractToken(req);
@@ -8,7 +9,7 @@ export const handlleAuthorization = (req: Request, resp: Response, next) => {
     resp.setHeader('WWW-Authenticate', 'Bearer token_type="JWT"');
     resp.status(401).json({ message: 'Você precisa se autenticar.' });
   } else {
-    jwt.verify(token, 'meat-api-password', (error, decoded) => {
+    jwt.verify(token, apiConfig.secret, (error, decoded) => {
       if (decoded) {
         next();
       } else {
@@ -23,6 +24,9 @@ function extractToken(req: Request): string {
 
   if (req.header && req.headers.authorization) {
     const parts = req.headers.authorization.toString().split(' ');
+
+    console.log(req.headers.toString());
+
 
     if (parts.length === 2 && parts[0] === 'Bearer') {
       token = parts[1];

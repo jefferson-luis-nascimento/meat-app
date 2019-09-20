@@ -11,6 +11,7 @@ export class InputComponent implements OnInit, AfterContentInit {
 
   @Input() label: string;
   @Input() errorMessage: string;
+  @Input() showTip = true;
 
   @ContentChild(NgModel, { static: true }) model: NgModel;
   @ContentChild(FormControlName, {static: true}) control: FormControlName;

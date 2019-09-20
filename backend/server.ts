@@ -35,7 +35,3 @@ const options = {
 https.createServer(options, server).listen(3001, () => {
   console.log('JSON Server is running on https://localhost:3001');
 });
-
-server.listen(3000, () => {
-  console.log('JSON Server is running');
-});
