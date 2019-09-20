@@ -1,11 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\backend",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\order",
-    "\\src\\app\\shared"
+    "\\src\\app\\restaurants"
   ],
-  "SelectedNode": "\\angular.json",
+  "SelectedNode": "\\backend\\authz.ts",
   "PreviewInSolutionExplorer": false
 }
