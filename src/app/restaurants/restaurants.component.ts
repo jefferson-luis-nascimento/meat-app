@@ -48,8 +48,10 @@ export class RestaurantsComponent implements OnInit {
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
-        switchMap(searchItem => this.restaurantsService.restaurants(searchItem)),
-        catchError(error => from([]))
+        switchMap(
+          searchItem => this.restaurantsService.restaurants(searchItem)
+            .pipe(catchError(error => from([])))
+        )        
       ).subscribe(
         restaurants => {
           console.log(restaurants);

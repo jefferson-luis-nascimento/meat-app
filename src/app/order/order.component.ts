@@ -4,7 +4,7 @@ import { OrderService } from './order-service';
 import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { LoginService } from '../security/login/login.service';
 
 @Component({
@@ -52,15 +52,18 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderForm = this.formBuilder.group({
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
+    this.orderForm = new FormGroup({
+      name: new FormControl('',
+        {
+          validators: [Validators.required, Validators.minLength(5)]
+        }),
       email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       adress: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
       number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
       optionalAdress: this.formBuilder.control(''),
       paymentOption: this.formBuilder.control('', [Validators.required]),
-    }, { validator: OrderComponent.equalsTo });
+    }, { validators: [OrderComponent.equalsTo], updateOn: 'blur' });
 
     console.log(this.loginService.user)
     console.log(this.loginService.isLoggedIn())
